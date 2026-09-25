@@ -142,7 +142,7 @@ view.splashGo.addEventListener("click", onActivate);
 
 async function resume() {
   if (!("usb" in navigator)) {
-    view.setNote("This browser has no WebUSB. Open it in Chrome or Edge.");
+    view.blockConnect("This browser has no WebUSB. Open it in Chrome or Edge.");
     return;
   }
   if (!window.isSecureContext) {
