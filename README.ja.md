@@ -1,5 +1,9 @@
-<a href="README.ja.md"><img align="right" alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-24292f?style=for-the-badge"></a>
-<a href="README.md"><img align="right" alt="English" src="https://img.shields.io/badge/English-0969da?style=for-the-badge"></a>
+<a href="README.ja.md">
+<img align="right" alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-555555?style=for-the-badge">
+</a>
+<a href="README.md">
+<img align="right" alt="English" src="https://img.shields.io/badge/English-007ec6?style=for-the-badge">
+</a>
 
 # FelicaWebReader
 
@@ -26,7 +30,7 @@ Sony PaSoRi 向けのサーバーレス WebUSB 実装。Suica、PASMO、ICOCA �
 
 ## 機能
 
-- クライアント側だけの WebUSB。ページを開いてリーダーを接続する。サーバーは不要。
+- クライアント側だけの WebUSB。ページを開いてリーダーを接続する。ドライバーは不要。
 - カード番号と残高（円）を表示する。
 - 最近の乗車と、それ以外の購入を一覧する。
 
