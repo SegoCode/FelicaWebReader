@@ -1,7 +1,7 @@
 # FelicaWebReader
 
 <p align="center">
-  <img src="media/demo.png" height="360">
+  <img src="media/imagen.png" height="360">
   <img src="media/pasori.webp" height="360">
 </p>
 
