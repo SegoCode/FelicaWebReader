@@ -29,7 +29,13 @@ Sony PaSoRi IC Card Reader serverless WebUSB implementation for reading Japanese
 
 ## Quick Start
 
-Plug the Sony PaSoRi reader into your computer, then open this page in Google Chrome or Microsoft Edge (WebUSB must be available). Click **Connect reader** and allow access when the browser prompts you. Place the IC card on the reader. If another application is already using the reader, close that application and click **Connect reader** again.
+1. Plug the Sony PaSoRi reader into your computer.
+2. Open this page in Google Chrome or Microsoft Edge (WebUSB must be available).
+3. Click **Connect reader** and allow access when the browser prompts you.
+4. Place the IC card on the reader.
+
+> [!WARNING]
+> If another application is already using the reader, close that application and click **Connect reader** again.
 
 ---
 <p align="center"><a href="https://github.com/SegoCode/FelicaWebReader/graphs/contributors">
