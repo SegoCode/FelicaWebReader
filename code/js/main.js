@@ -8,6 +8,7 @@ const PID = 0x01bb;
 const view = createView();
 const session = { device: null, needsReset: false };
 const { transceive } = createTransport(session);
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 
 let ready = false;
 let busy = false;
