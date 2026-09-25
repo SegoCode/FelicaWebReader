@@ -1,5 +1,9 @@
-<a href="README.ja.md"><img align="right" alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-0969da?style=for-the-badge"></a>
-<a href="README.md"><img align="right" alt="English" src="https://img.shields.io/badge/English-24292f?style=for-the-badge"></a>
+<a href="README.ja.md">
+<img align="right" alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-007ec6?style=for-the-badge">
+</a>
+<a href="README.md">
+<img align="right" alt="English" src="https://img.shields.io/badge/English-555555?style=for-the-badge">
+</a>
 
 # FelicaWebReader
 
@@ -26,7 +30,7 @@ Sony PaSoRi IC Card Reader serverless WebUSB implementation for reading Japanese
 
 ## Features
 
-- Fully client-side WebUSB implementation — open the page and connect the reader. No server required.
+- Fully client-side WebUSB implementation. Open the page and connect the reader. No driver required.
 - Displays the card number and remaining balance in yen.
 - Lists recent trips and other purchases.
 
