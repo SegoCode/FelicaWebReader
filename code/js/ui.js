@@ -20,13 +20,27 @@ export function createView() {
   const app = document.getElementById("app");
 
   let mode = "";
+  let blocked = false;
 
-  function setNote(text) {
+  function setNote(text, tone) {
     splashNote.hidden = !text;
     splashNote.textContent = text;
+    splashNote.classList.toggle("is-error", tone === "error");
+  }
+
+  function blockConnect(text) {
+    blocked = true;
+    setNote(text, "error");
+    document.getElementById("splash-hint").hidden = true;
+    for (const el of [splashCard, splashGo]) {
+      el.disabled = true;
+      el.classList.add("is-unavailable");
+      el.setAttribute("aria-describedby", "splash-note");
+    }
   }
 
   function setBusy(on) {
+    if (blocked) return;
     for (const el of [splashCard, splashGo]) {
       el.disabled = on;
       if (on) el.setAttribute("aria-busy", "true");
@@ -118,7 +132,7 @@ export function createView() {
     const name = e.name || "";
     const msg = String(e.message || "");
     if (e.code === "nousb" || name === "nousb") {
-      setNote("This browser has no WebUSB. Open it in Chrome or Edge.");
+      blockConnect("This browser has no WebUSB. Open it in Chrome or Edge.");
       return;
     }
     if (e.code === "insecure" || name === "SecurityError") {
@@ -146,6 +160,7 @@ export function createView() {
     splashGo,
     get mode() { return mode; },
     setNote,
+    blockConnect,
     setBusy,
     hideSplash,
     showAway,
