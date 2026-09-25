@@ -1,7 +1,12 @@
+<p align="right">
+  <a href="README.md"><img alt="English" src="https://img.shields.io/badge/English-24292f?style=for-the-badge"></a>
+  <a href="README.ja.md"><img alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-0969da?style=for-the-badge"></a>
+</p>
+
 # FelicaWebReader
 
 <p align="center">
-  <img src="media/imagen.png" height="360">
+  <img src="media/demo2.jpg" height="360">
   <img src="media/pasori.webp" height="360">
 </p>
 
