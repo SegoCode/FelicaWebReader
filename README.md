@@ -1,4 +1,4 @@
-# FelicaWebReader <a href="README.ja.md"><img align="right" alt="日本語" src="https://img.shields.io/badge/%E6%97%A5%E6%9C%AC%E8%AA%9E-007ec6?style=for-the-badge"></a><a href="README.md"><img align="right" alt="English" src="https://img.shields.io/badge/English-555555?style=for-the-badge"></a>
+# FelicaWebReader <a href="README.ja.md"><img align="right" alt="日本語" src="media/badge-ja.svg"></a><a href="README.md"><img align="right" alt="English" src="media/badge-en-on.svg"></a>
 
 <p align="center">
   <img src="media/demo2.jpg" height="360">
