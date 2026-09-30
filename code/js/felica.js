@@ -8,8 +8,6 @@ const INIT = [
   [0x5a, 0x80],
 ];
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
 export async function init(transceive) {
   for (const cmd of INIT) await transceive(cmd, 500);
 }
@@ -47,7 +45,7 @@ function parseDate(b0, b1) {
   const month = (x >> 5) & 0xf;
   const day = x & 0x1f;
   if (month < 1 || month > 12 || day < 1 || day > 31) return null;
-  return `${day} ${MONTHS[month - 1]} ${year}`;
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
 function parseTime(b0, b1) {
@@ -58,15 +56,15 @@ function parseTime(b0, b1) {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }
 
-function titleFor(term, proc) {
-  if (proc === 0x02 || term === 0x07 || term === 0x08) return "Top up";
-  if (proc === 0x46 || term === 0x12 || term === 0xc7 || term === 0xc8) return "Purchase";
-  if (proc === 0x0d || proc === 0x0f || proc === 0x1f || proc === 0x23 || term === 0x05) return "Bus";
-  if (proc === 0x14) return "Ticket office";
-  if (proc === 0x15) return "Adjustment";
-  if (proc === 0x03) return "Ticket";
-  if (proc === 0x01 || term === 0x16 || term === 0x18) return "Train";
-  return "Trip";
+function kindFor(term, proc) {
+  if (proc === 0x02 || term === 0x07 || term === 0x08) return "topup";
+  if (proc === 0x46 || term === 0x12 || term === 0xc7 || term === 0xc8) return "purchase";
+  if (proc === 0x0d || proc === 0x0f || proc === 0x1f || proc === 0x23 || term === 0x05) return "bus";
+  if (proc === 0x14) return "office";
+  if (proc === 0x15) return "adjust";
+  if (proc === 0x03) return "ticket";
+  if (proc === 0x01 || term === 0x16 || term === 0x18) return "train";
+  return "trip";
 }
 
 export function parseTrips(blocks) {
@@ -75,12 +73,12 @@ export function parseTrips(blocks) {
     if ([...block].every((x) => x === 0)) continue;
     const date = parseDate(block[4], block[5]);
     if (!date) continue;
-    const title = titleFor(block[0], block[1]);
+    const kind = kindFor(block[0], block[1]);
     rows.push({
-      title,
+      kind,
       date,
-      time: title === "Purchase" ? parseTime(block[6], block[7]) : null,
-      credit: title === "Top up",
+      time: kind === "purchase" ? parseTime(block[6], block[7]) : null,
+      credit: kind === "topup",
       balance: block[10] | (block[11] << 8),
     });
   }
