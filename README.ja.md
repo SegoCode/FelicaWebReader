@@ -31,11 +31,11 @@ Sony PaSoRi 向けのサーバーレス WebUSB 実装。Suica、PASMO、ICOCA �
 
 1. Sony PaSoRi リーダーをコンピューターに接続する。
 2. Google Chrome または Microsoft Edge で https://segocode.github.io/FelicaWebReader/ を開く（WebUSB が必要）。
-3. **Connect reader** をクリックし、ブラウザの確認でアクセスを許可する。
+3. **リーダーを接続**（英語表示では **Connect reader**）をクリックし、ブラウザの確認でアクセスを許可する。右上の **English / 日本語** で表示言語を切り替えられる。
 4. ICカードをリーダーに置く。
 
 > [!WARNING]
-> 別のアプリがすでにリーダーを使っている場合は、そのアプリを終了してから **Connect reader** を再度クリックする。
+> 別のアプリがすでにリーダーを使っている場合は、そのアプリを終了してから **リーダーを接続** を再度クリックする。
 
 ---
 <p align="center"><a href="https://github.com/SegoCode/FelicaWebReader/graphs/contributors">
