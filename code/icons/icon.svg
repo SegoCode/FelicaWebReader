@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><filter id="drop" x="-30%" y="-30%" width="160%" height="170%">
+  <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.14"/>
+  <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000" flood-opacity="0.10"/>
+</filter>
+<filter id="tile" x="-10%" y="-10%" width="120%" height="125%">
+  <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.12"/>
+</filter></defs>
+  <rect x="50" y="46" width="412" height="412" rx="92" fill="#fefdfb" filter="url(#tile)"/>
+  <rect x="50.5" y="46.5" width="411" height="411" rx="91.5" fill="none" stroke="#000" stroke-opacity="0.06"/>
+  <g filter="url(#drop)">
+    <rect x="122" y="167.47" width="268" height="169.07" rx="12.51" fill="#0a0b0f"/>
+  </g>
+  <clipPath id="c"><rect x="122" y="167.47" width="268" height="169.07" rx="12.51"/></clipPath>
+  <g clip-path="url(#c)">
+    <rect x="122" y="183.55" width="8.04" height="136.91" rx="2.68" fill="#0c8c5e"/>
+    <rect x="118.43" y="183.55" width="5.36" height="136.91" fill="#0c8c5e"/>
+  </g>
+  <rect x="152.37" y="231.45" width="55.39" height="41.09" rx="3.57" fill="#ebe9e6"/>
+  <rect x="162.2" y="246.64" width="35.73" height="2.68" rx="1.34" fill="#717d79"/>
+  <rect x="162.2" y="254.68" width="23.82" height="2.68" rx="1.34" fill="#717d79"/></svg>
