@@ -1,4 +1,5 @@
 import { hex } from "./felica.js";
+import { t, formatDate } from "./i18n.js";
 
 function formatYen(n) {
   return `¥${Math.abs(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
@@ -22,15 +23,17 @@ export function createView() {
   let mode = "";
   let blocked = false;
 
-  function setNote(text, tone) {
-    splashNote.hidden = !text;
-    splashNote.textContent = text;
+  function setNote(key, tone) {
+    splashNote.hidden = !key;
+    splashNote.textContent = key ? t(key) : "";
+    if (key) splashNote.dataset.i18n = key;
+    else delete splashNote.dataset.i18n;
     splashNote.classList.toggle("is-error", tone === "error");
   }
 
-  function blockConnect(text) {
+  function blockConnect(key) {
     blocked = true;
-    setNote(text, "error");
+    setNote(key, "error");
     document.getElementById("splash-hint").hidden = true;
     for (const el of [splashCard, splashGo]) {
       el.disabled = true;
@@ -91,7 +94,8 @@ export function createView() {
     if (!card.history.length) {
       const empty = document.createElement("p");
       empty.className = "py-3.5 text-sm text-foreground-secondary";
-      empty.textContent = "No trips.";
+      empty.dataset.i18n = "empty";
+      empty.textContent = t("empty");
       trips.append(empty);
       return;
     }
@@ -102,11 +106,13 @@ export function createView() {
       left.className = "min-w-0";
       const title = document.createElement("p");
       title.className = "font-medium";
-      title.textContent = trip.title;
+      title.dataset.i18n = trip.kind;
+      title.textContent = t(trip.kind);
       const meta = document.createElement("p");
       meta.className = "flex flex-wrap gap-x-3 text-sm text-foreground-secondary";
       const date = document.createElement("span");
-      date.textContent = trip.date;
+      date.dataset.date = trip.date;
+      date.textContent = formatDate(trip.date);
       meta.append(date);
       if (trip.time) {
         const time = document.createElement("span");
@@ -132,27 +138,27 @@ export function createView() {
     const name = e.name || "";
     const msg = String(e.message || "");
     if (e.code === "nousb" || name === "nousb") {
-      blockConnect("This browser has no WebUSB. Open it in Chrome or Edge.");
+      blockConnect("nousb");
       return;
     }
     if (e.code === "insecure" || name === "SecurityError") {
-      setNote("WebUSB needs localhost or HTTPS.");
+      setNote("insecure");
       return;
     }
     if (name === "NotFoundError" || name === "NotAllowedError") {
-      setNote("No reader was selected. Press Connect reader.");
+      setNote("unselected");
       return;
     }
     if (/claim|busy|access denied|in use|protected/i.test(msg)) {
-      setNote("The reader is in use. Close the other program and press again.");
+      setNote("inuse");
       return;
     }
     if (msg === "timeout" || msg === "ack") {
       onReader();
-      setNote("The reader did not respond. Plug it back in and press Connect reader.");
+      setNote("timeout");
       return;
     }
-    setNote("Could not read. Press Connect reader.");
+    setNote("failed");
   }
 
   return {
