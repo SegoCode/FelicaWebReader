@@ -70,7 +70,7 @@
   --color-brand: var(--brand);
   --color-brand-8: var(--brand-8);
   --color-error: var(--error);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", Meiryo, ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-rise: rise 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -92,9 +92,12 @@
   pointer-events: none;
 }
 .splash-card {
-  width: min(100%, 18rem, calc((100svh - 16rem) * 856 / 540));
+  width: min(100%, 18rem, calc((100svh - 18.5rem) * 856 / 540));
   max-width: 100%;
   aspect-ratio: 856 / 540;
+}
+:lang(ja) {
+  word-break: auto-phrase;
 }
 @media (prefers-reduced-motion: reduce) {
   #splash.is-leaving { animation: none; }
@@ -126,4 +129,10 @@
   box-shadow:
     inset 0 0 0 1px color-mix(in srgb, var(--fg-invert) 28%, transparent),
     var(--button-drop-hover);
+}
+@utility shadow-inset-line {
+  box-shadow: inset 0 0 0 1px var(--border-secondary);
+}
+@utility shadow-segment {
+  box-shadow: inset 0 0 0 1px var(--border-secondary), var(--button-drop);
 }
